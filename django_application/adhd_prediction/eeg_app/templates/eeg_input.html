@@ -9,71 +9,75 @@
 </head>
 <body>
     <h1>ADHD Prediction Tool</h1>
-    <p>Enter the 19 EEG values below and click Predict to determine if the person likely has ADHD.</p>
-    <form id="eegForm">
-        {% csrf_token %}
-        <label for="Fp1">Fp1: Left frontal pole</label>
-        <input type="number" id="Fp1" name="Fp1" step="any" required>
-        
-        <label for="Fp2">Fp2: Right frontal pole</label>
-        <input type="number" id="Fp2" name="Fp2" step="any" required>
-        
-        <label for="F7">F7 (T3): Left anterior temporal region</label>
-        <input type="number" id="F7" name="F7" step="any" required>
-        
-        <label for="F3">F3: Left frontal region</label>
-        <input type="number" id="F3" name="F3" step="any" required>
-        
-        <label for="Fz">Fz: Midline frontal region</label>
-        <input type="number" id="Fz" name="Fz" step="any" required>
-        
-        <label for="F4">F4: Right frontal region</label>
-        <input type="number" id="F4" name="F4" step="any" required>
-        
-        <label for="F8">F8 (T4): Right anterior temporal region</label>
-        <input type="number" id="F8" name="F8" step="any" required>
-        
-        <label for="T3">T3 (T7): Left mid-temporal region</label>
-        <input type="number" id="T3" name="T3" step="any" required>
-        
-        <label for="C3">C3: Left central region</label>
-        <input type="number" id="C3" name="C3" step="any" required>
-        
-        <label for="Cz">Cz: Midline central region</label>
-        <input type="number" id="Cz" name="Cz" step="any" required>
-        
-        <label for="C4">C4: Right central region</label>
-        <input type="number" id="C4" name="C4" step="any" required>
-        
-        <label for="T4">T4 (T8): Right mid-temporal region</label>
-        <input type="number" id="T4" name="T4" step="any" required>
-        
-        <label for="T5">T5 (P7): Left posterior temporal region</label>
-        <input type="number" id="T5" name="T5" step="any" required>
-        
-        <label for="P3">P3: Left parietal region</label>
-        <input type="number" id="P3" name="P3" step="any" required>
-        
-        <label for="Pz">Pz: Midline parietal region</label>
-        <input type="number" id="Pz" name="Pz" step="any" required>
-        
-        <label for="P4">P4: Right parietal region</label>
-        <input type="number" id="P4" name="P4" step="any" required>
-        
-        <label for="T6">T6 (P8): Right posterior temporal region</label>
-        <input type="number" id="T6" name="T6" step="any" required>
-        
-        <label for="O1">O1: Left occipital region</label>
-        <input type="number" id="O1" name="O1" step="any" required>
-        
-        <label for="O2">O2: Right occipital region</label>
-        <input type="number" id="O2" name="O2" step="any" required>
-        
-        <button type="submit">Predict</button>
-    </form>
-    
+
+    <!-- Part 1: Manual EEG entry -->
+    <section>
+        <h2>Enter EEG Values Manually</h2>
+        <p>Fill in the 19 EEG values below and click Predict.</p>
+        <form id="eegForm" method="post">
+            {% csrf_token %}
+            <label for="Fp1">Fp1: Left frontal pole</label>
+            <input type="number" id="Fp1" name="Fp1" step="any" required>
+            <label for="Fp2">Fp2: Right frontal pole</label>
+            <input type="number" id="Fp2" name="Fp2" step="any" required>
+            <label for="F7">F7: Left anterior temporal region</label>
+            <input type="number" id="F7" name="F7" step="any" required>
+            <label for="F3">F3: Left frontal region</label>
+            <input type="number" id="F3" name="F3" step="any" required>
+            <label for="Fz">Fz: Midline frontal region</label>
+            <input type="number" id="Fz" name="Fz" step="any" required>
+            <label for="F4">F4: Right frontal region</label>
+            <input type="number" id="F4" name="F4" step="any" required>
+            <label for="F8">F8: Right anterior temporal region</label>
+            <input type="number" id="F8" name="F8" step="any" required>
+            <label for="T3">T3: Left mid-temporal region</label>
+            <input type="number" id="T3" name="T3" step="any" required>
+            <label for="C3">C3: Left central region</label>
+            <input type="number" id="C3" name="C3" step="any" required>
+            <label for="Cz">Cz: Midline central region</label>
+            <input type="number" id="Cz" name="Cz" step="any" required>
+            <label for="C4">C4: Right central region</label>
+            <input type="number" id="C4" name="C4" step="any" required>
+            <label for="T4">T4: Right mid-temporal region</label>
+            <input type="number" id="T4" name="T4" step="any" required>
+            <label for="T5">T5: Left posterior temporal region</label>
+            <input type="number" id="T5" name="T5" step="any" required>
+            <label for="P3">P3: Left parietal region</label>
+            <input type="number" id="P3" name="P3" step="any" required>
+            <label for="Pz">Pz: Midline parietal region</label>
+            <input type="number" id="Pz" name="Pz" step="any" required>
+            <label for="P4">P4: Right parietal region</label>
+            <input type="number" id="P4" name="P4" step="any" required>
+            <label for="T6">T6: Right posterior temporal region</label>
+            <input type="number" id="T6" name="T6" step="any" required>
+            <label for="O1">O1: Left occipital region</label>
+            <input type="number" id="O1" name="O1" step="any" required>
+            <label for="O2">O2: Right occipital region</label>
+            <input type="number" id="O2" name="O2" step="any" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Part 2: CSV file upload -->
+    <section>
+        <h2>Or Upload a CSV File</h2>
+        <p>Upload a CSV file containing EEG values and click Predict.</p>
+        <form id="csvForm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+            <button type="submit">Upload & Predict</button>
+        </form>
+    </section>
+
     <div id="result"></div>
-    
+
+    <button class="btn btn-outline-info" type="button">
+        <a href="{% url 'dashboard' %}"><h2>Back to Home</h2></a>
+    </button>
+
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
